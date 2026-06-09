@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <header>
@@ -10,29 +11,29 @@ export default function Navbar() {
           </h1>
 
           <nav className="flex gap-6 text-gray-600">
-            <a href="#" className="hover:text-black transition">
+            <Link to="/" className="hover:text-black transition">
               Inicio
-            </a>
+            </Link>
 
-            <a href="#" className="hover:text-black transition">
+            <Link to="/peliculas" className="hover:text-black transition">
               Películas
-            </a>
+            </Link>
 
-            <a href="#" className="hover:text-black transition">
+            <Link to="/series" className="hover:text-black transition">
               Series
-            </a>
+            </Link>
 
-            <a href="#" className="hover:text-black transition">
+            <Link to="/libros"className="hover:text-black transition">
               Libros
-            </a>
+            </Link>
 
-            <a href="#" className="hover:text-black transition">
+            <Link to="/favoritos" className="hover:text-black transition">
               Favoritos
-            </a>
+            </Link>
 
-            <a href="#" className="hover:text-black transition">
+            <Link to="/etiquetas" className="hover:text-black transition">
               Etiquetas
-            </a>
+            </Link>
           </nav>
 
         </div>

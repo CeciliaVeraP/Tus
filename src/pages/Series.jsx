@@ -1,3 +1,5 @@
+import Footer from "../components/Footer";
+
 import Navbar from "../components/Navbar";
 
 export default function Series() {
@@ -10,6 +12,7 @@ export default function Series() {
           Series
         </h1>
       </main>
+      <Footer />
     </>
   );
 }

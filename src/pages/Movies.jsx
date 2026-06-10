@@ -1,11 +1,10 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import MainLayout from "../layouts/MainLayout";
 import MovieCard from "../components/MovieCard";
 
 export default function Movies() {
   return (
-    <>
-      <Navbar />
+    <MainLayout>
+      
 
       <main className="max-w-7xl mx-auto px-6 py-8">
 
@@ -60,7 +59,6 @@ export default function Movies() {
     </div>
 
       </main>
-      <Footer />
-    </>
+    </MainLayout>
   );
 }

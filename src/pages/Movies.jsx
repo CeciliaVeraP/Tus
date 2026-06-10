@@ -47,11 +47,22 @@ export default function Movies() {
 
         </div>
 
-     <div className="mt-10 grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4">
+     <div className="mt-10 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
 
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
+            <MovieCard
+  title="Interstellar"
+  year="2014"
+/>
+
+<MovieCard
+  title="The Dark Knight"
+  year="2008"
+/>
+
+<MovieCard
+  title="Toy Story"
+  year="1995"
+/>
             <MovieCard />
             <MovieCard />
             <MovieCard />

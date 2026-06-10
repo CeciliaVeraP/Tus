@@ -1,4 +1,4 @@
-export default function MovieCard() {
+export default function MovieCard({ title, year }) {
   return (
     <div className="group cursor-pointer">
 
@@ -13,11 +13,11 @@ export default function MovieCard() {
       <div className="mt-2">
 
         <h3 className="font-medium text-sm truncate">
-          Interstellar
+          {title}
         </h3>
 
         <p className="text-xs text-gray-500">
-          2014
+          {year}
         </p>
 
       </div>

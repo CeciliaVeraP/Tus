@@ -11,10 +11,13 @@ import ExplorarSeries from "./pages/ExplorarSeries";
 import ExplorarBooks from "./pages/ExplorarBooks";
 import AllMovies from "./pages/AllMovies";
 import CategoryMovies from "./pages/CategoryMovies";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
+
     <BrowserRouter>
+    <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/peliculas" element={<Movies />} />

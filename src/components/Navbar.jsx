@@ -1,10 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 
 export default function Navbar() {
   const [openExplore, setOpenExplore] = useState(false);
   const exploreRef = useRef(null);
-  useEffect(() => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+
+  function goHome() {
+  if (location.pathname === "/") {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  } else {
+    navigate("/");
+  }
+}  
+useEffect(() => {
   function handleClickOutside(event) {
     if (
       exploreRef.current &&
@@ -29,17 +43,20 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
         <div className="flex items-center gap-10">
-          <Link
-            to="/"
+          <button
+            onClick={goHome}
             className="text-2xl font-semibold tracking-wide"
           >
             TUS
-          </Link>
+          </button>
 
           <nav className="flex items-center gap-6 text-gray-600">
-            <Link to="/" className="hover:text-black transition">
-              Inicio
-            </Link>
+          <button
+            onClick={goHome}
+            className="hover:text-black transition"
+          >
+            Inicio
+          </button>
 
             <Link to="/peliculas" className="hover:text-black transition">
               Películas

@@ -9,6 +9,7 @@ import Tags from "./pages/Tags";
 import ExplorarMovies from "./pages/ExplorarMovies";
 import ExplorarSeries from "./pages/ExplorarSeries";
 import ExplorarBooks from "./pages/ExplorarBooks";
+import AllMovies from "./pages/AllMovies";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/explorar/peliculas" element={<ExplorarMovies />} />
         <Route path="/explorar/series" element={<ExplorarSeries />} />
         <Route path="/explorar/libros" element={<ExplorarBooks />} />
+        <Route path="/explorar/peliculas/todas"element={<AllMovies />} />
       </Routes>
     </BrowserRouter>
   );

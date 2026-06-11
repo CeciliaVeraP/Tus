@@ -1,6 +1,7 @@
 import MainLayout from "../layouts/MainLayout";
 import ExploreSection from "../components/ExploreSection";
 import moviesMock from "../data/moviesMock";
+import { Link } from "react-router-dom";
 
 export default function ExplorarMovies() {
   return (
@@ -15,9 +16,9 @@ export default function ExplorarMovies() {
           Descubre nuevas películas para agregar a tu biblioteca.
         </p>
 
-        <button className="mt-4 text-sm text-gray-700 hover:text-black transition">
-          Ver todas las películas →
-        </button>
+        <Link to="/explorar/peliculas/todas"
+        className="inline-block mt-4 text-sm text-gray-700 hover:text-black transition"
+        >Ver todas las películas →</Link>
 
         {moviesMock.map((category) => (
           <ExploreSection

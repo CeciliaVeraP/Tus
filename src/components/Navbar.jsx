@@ -18,6 +18,18 @@ export default function Navbar() {
     navigate("/");
   }
 }  
+
+function navigateOrScroll(path) {
+  if (location.pathname === path) {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  } else {
+    navigate(path);
+  }
+}
+
 useEffect(() => {
   function handleClickOutside(event) {
     if (
@@ -58,25 +70,40 @@ useEffect(() => {
             Inicio
           </button>
 
-            <Link to="/peliculas" className="hover:text-black transition">
-              Películas
-            </Link>
+          <button
+            onClick={() => navigateOrScroll("/peliculas")}
+            className="hover:text-black transition"
+          >
+            Películas
+          </button>
 
-            <Link to="/series" className="hover:text-black transition">
-              Series
-            </Link>
+          <button
+            onClick={() => navigateOrScroll("/series")}
+            className="hover:text-black transition"
+          >
+            Series
+          </button>
 
-            <Link to="/libros" className="hover:text-black transition">
-              Libros
-            </Link>
+          <button
+            onClick={() => navigateOrScroll("/libros")}
+            className="hover:text-black transition"
+          >
+            Libros
+          </button>
 
-            <Link to="/favoritos" className="hover:text-black transition">
-              Favoritos
-            </Link>
+          <button
+            onClick={() => navigateOrScroll("/favoritos")}
+            className="hover:text-black transition"
+          >
+            Favoritos
+          </button>
 
-            <Link to="/etiquetas" className="hover:text-black transition">
+            <button
+              onClick={() => navigateOrScroll("/etiquetas")}
+              className="hover:text-black transition"
+            >
               Etiquetas
-            </Link>
+            </button>
 
                         <div
             ref={exploreRef}
@@ -91,29 +118,36 @@ useEffect(() => {
 
               {openExplore && (
                 <div className=" absolute top-8 left-0 bg-white border rounded-lg shadow-md w-40">
-                  <Link
-                    to="/explorar/peliculas"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                    onClick={() => setOpenExplore(false)}
-                  >
-                    Películas
-                  </Link>
+                <button
+                  onClick={() => {
+                    navigateOrScroll("/explorar/peliculas");
+                    setOpenExplore(false);
+                  }}
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                >
+                  Películas
+                </button>
 
-                  <Link
-                    to="/explorar/series"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                    onClick={() => setOpenExplore(false)}
-                  >
-                    Series
-                  </Link>
+                <button
+                  onClick={() => {
+                    navigateOrScroll("/explorar/series");
+                    setOpenExplore(false);
+                  }}
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                >
+                  Series
+                </button>
 
-                  <Link
-                    to="/explorar/libros"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                    onClick={() => setOpenExplore(false)}
+                  <button
+                    onClick={() => {
+                      navigateOrScroll("/explorar/libros");
+                      setOpenExplore(false);
+                    }}
+                    className="block w-full text-left px-4 py-2 hover:bg-gray-100"
                   >
                     Libros
-                  </Link>
+                  </button>
+
                 </div>
               )}
             </div>

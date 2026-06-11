@@ -10,6 +10,7 @@ import ExplorarMovies from "./pages/ExplorarMovies";
 import ExplorarSeries from "./pages/ExplorarSeries";
 import ExplorarBooks from "./pages/ExplorarBooks";
 import AllMovies from "./pages/AllMovies";
+import CategoryMovies from "./pages/CategoryMovies";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
         <Route path="/explorar/series" element={<ExplorarSeries />} />
         <Route path="/explorar/libros" element={<ExplorarBooks />} />
         <Route path="/explorar/peliculas/todas"element={<AllMovies />} />
+        <Route path="/explorar/peliculas/categoria/:category"
+  element={<CategoryMovies />} />
+
       </Routes>
     </BrowserRouter>
   );

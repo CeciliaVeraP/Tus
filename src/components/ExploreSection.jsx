@@ -1,4 +1,13 @@
 import MovieCard from "./MovieCard";
+import { Link } from "react-router-dom";
+
+function createSlug(text) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "-");
+}
 
 export default function ExploreSection({ category, movies }) {
   return (
@@ -10,9 +19,12 @@ export default function ExploreSection({ category, movies }) {
           {category}
         </h2>
 
-        <button className="text-sm text-gray-700 hover:text-black transition">
+        <Link
+          to={`/explorar/peliculas/categoria/${createSlug(category)}`}
+          className="text-sm text-gray-700 hover:text-black transition"
+        >
           Ver todas →
-        </button>
+        </Link>
 
       </div>
 

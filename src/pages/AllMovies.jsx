@@ -34,6 +34,7 @@ export default function AllMovies() {
           {allMovies.map((movie) => (
             <MovieCard
               key={movie.id}
+              id={movie.id}
               title={movie.title}
               year={movie.year}
             />

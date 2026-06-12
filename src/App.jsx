@@ -11,31 +11,35 @@ import ExplorarSeries from "./pages/ExplorarSeries";
 import ExplorarBooks from "./pages/ExplorarBooks";
 import AllMovies from "./pages/AllMovies";
 import CategoryMovies from "./pages/CategoryMovies";
-import ScrollToTop from "./components/ScrollToTop";
 import MovieDetail from "./pages/MovieDetail";
+import ScrollToTop from "./components/ScrollToTop";
+
+import { ToastProvider } from "./context/ToastContext";
 
 function App() {
   return (
-
-    <BrowserRouter>
-    <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/peliculas" element={<Movies />} />
-        <Route path="/series" element={<Series />} />
-        <Route path="/libros" element={<Books />} />
-        <Route path="/favoritos" element={<Favorites />} />
-        <Route path="/etiquetas" element={<Tags />} />
-        <Route path="/explorar/peliculas" element={<ExplorarMovies />} />
-        <Route path="/explorar/series" element={<ExplorarSeries />} />
-        <Route path="/explorar/libros" element={<ExplorarBooks />} />
-        <Route path="/explorar/peliculas/todas"element={<AllMovies />} />
-        <Route path="/explorar/peliculas/categoria/:category"
-  element={<CategoryMovies />} />
-        <Route path="/pelicula/:id" element={<MovieDetail />} />
-
-      </Routes>
-    </BrowserRouter>
+    <ToastProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/peliculas" element={<Movies />} />
+          <Route path="/series" element={<Series />} />
+          <Route path="/libros" element={<Books />} />
+          <Route path="/favoritos" element={<Favorites />} />
+          <Route path="/etiquetas" element={<Tags />} />
+          <Route path="/explorar/peliculas" element={<ExplorarMovies />} />
+          <Route path="/explorar/series" element={<ExplorarSeries />} />
+          <Route path="/explorar/libros" element={<ExplorarBooks />} />
+          <Route path="/explorar/peliculas/todas" element={<AllMovies />} />
+          <Route
+            path="/explorar/peliculas/categoria/:category"
+            element={<CategoryMovies />}
+          />
+          <Route path="/pelicula/:id" element={<MovieDetail />} />
+        </Routes>
+      </BrowserRouter>
+    </ToastProvider>
   );
 }
 

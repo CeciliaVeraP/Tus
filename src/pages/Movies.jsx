@@ -1,7 +1,11 @@
 import MainLayout from "../layouts/MainLayout";
 import MovieCard from "../components/MovieCard";
+import moviesMock from "../data/moviesMock";
 
 export default function Movies() {
+  const allMovies = moviesMock.flatMap(
+  (category) => category.movies
+);
   return (
     <MainLayout>
       
@@ -49,23 +53,14 @@ export default function Movies() {
 
      <div className="mt-10 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
 
-            <MovieCard
-  title="Interstellar"
-  year="2014"
-/>
-
-<MovieCard
-  title="The Dark Knight"
-  year="2008"
-/>
-
-<MovieCard
-  title="Toy Story"
-  year="1995"
-/>
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
+      {allMovies.map((movie) => (
+        <MovieCard
+          key={movie.id}
+          id={movie.id}
+          title={movie.title}
+          year={movie.year}
+        />
+      ))}
 
     </div>
 

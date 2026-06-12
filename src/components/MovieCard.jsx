@@ -1,7 +1,14 @@
-export default function MovieCard({ title, year }) {
-  return (
-    <div className="group cursor-pointer">
+import { useNavigate } from "react-router-dom";
 
+export default function MovieCard({ id, title, year }) {
+
+  const navigate = useNavigate();
+
+  return (
+    <div
+      className="group cursor-pointer"
+      onClick={() => navigate(`/pelicula/${id}`)}
+    >
       <div className="aspect-[2/3] rounded-xl bg-gray-200 overflow-hidden flex items-center justify-center">
 
         <span className="text-xs text-gray-500">
@@ -21,7 +28,6 @@ export default function MovieCard({ title, year }) {
         </p>
 
       </div>
-
     </div>
   );
 }

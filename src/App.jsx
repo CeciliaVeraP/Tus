@@ -12,6 +12,7 @@ import ExplorarBooks from "./pages/ExplorarBooks";
 import AllMovies from "./pages/AllMovies";
 import CategoryMovies from "./pages/CategoryMovies";
 import ScrollToTop from "./components/ScrollToTop";
+import MovieDetail from "./pages/MovieDetail";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/explorar/peliculas/todas"element={<AllMovies />} />
         <Route path="/explorar/peliculas/categoria/:category"
   element={<CategoryMovies />} />
+        <Route path="/pelicula/:id" element={<MovieDetail />} />
 
       </Routes>
     </BrowserRouter>

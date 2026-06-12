@@ -32,11 +32,12 @@ export default function CategoryMovies() {
 
         <div className="mt-10 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
         {selectedCategory?.movies.map((movie) => (
-            <MovieCard
-            key={movie.id}
-            title={movie.title}
-            year={movie.year}
-            />
+        <MovieCard
+          key={movie.id}
+          id={movie.id}
+          title={movie.title}
+          year={movie.year}
+        />
         ))}
 
 </div>

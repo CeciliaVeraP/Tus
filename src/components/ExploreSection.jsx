@@ -33,6 +33,7 @@ export default function ExploreSection({ category, movies }) {
         {movies.map((movie) => (
           <MovieCard
             key={movie.id}
+            id={movie.id}
             title={movie.title}
             year={movie.year}
           />

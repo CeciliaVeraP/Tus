@@ -25,6 +25,26 @@ function MovieDetail() {
   const category = movieData?.category;
   const { showToast } = useToast();
 
+  const availableLists = [
+  "Ver con mi novio",
+  "Favoritas 2026",
+  "Para llorar",
+  "Marvel",
+];
+const [showLists, setShowLists] = useState(false);
+const [selectedLists, setSelectedLists] = useState([]);
+
+function getStatusLabel(status) {
+  const labels = {
+    pending: "Pendiente",
+    progress: "En progreso",
+    completed: "Completada",
+    abandoned: "Abandonada",
+  };
+
+  return labels[status] || status;
+}
+
   return (
     
     <>
@@ -163,64 +183,165 @@ function MovieDetail() {
           </div>
         </div>
       </MainLayout>
+{/* MODAL */}
+{showModal && (
+  <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 px-4">
+    <div className="w-full max-w-lg rounded-3xl bg-white p-6 shadow-2xl">
 
-      {/* MODAL */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[9999]">
+      <div className="mb-6">
+        <p className="text-sm text-gray-500">
+          Guardar en tu biblioteca
+        </p>
 
-          <div className="bg-white w-full max-w-md rounded-xl p-6">
+        <div className="mt-2 flex items-start justify-between gap-4">
+          <h2 className="text-2xl font-bold">
+            {movie?.title}
+          </h2>
 
-            <h2 className="text-xl font-semibold mb-4">
-              Agregar a tu biblioteca
-            </h2>
+        <span className="rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-700">
+          ✓ {getStatusLabel(selectedStatus)}
+        </span>
+                </div>
+      </div>
 
-            <p className="text-sm text-gray-500 mb-4">
-              Estado: {selectedStatus}
-            </p>
+      <div className="space-y-5">
 
-            <input
-              type="text"
-              placeholder="Año visto (opcional)"
-              className="w-full border rounded-lg px-3 py-2 mb-3"
-            />
+        <div>
+          <label className="mb-2 block text-sm font-medium">
+            ¿Cuándo la viste?
+          </label>
 
-            <textarea
-              placeholder="Comentario (opcional)"
-              className="w-full border rounded-lg px-3 py-2 mb-3"
-              rows="3"
-            />
+<select
+  className="w-full rounded-2xl border bg-gray-50 px-4 py-3 outline-none transition focus:border-black focus:bg-white"
+>
+  <option value="">
+    Selecciona un año
+  </option>
 
-            <input
-              type="text"
-              placeholder="Listas separadas por coma"
-              className="w-full border rounded-lg px-3 py-2 mb-4"
-            />
+  {Array.from({ length: 80 }, (_, index) => {
+    const year = new Date().getFullYear() - index;
 
-            <div className="flex justify-end gap-2">
+    return (
+      <option key={year} value={year}>
+        {year}
+      </option>
+    );
+  })}
+</select>
+        </div>
 
-              <button
-                onClick={() => setShowModal(false)}
-                className="px-4 py-2 rounded-lg border"
-              >
-                Cancelar
-              </button>
+        <div>
+          <label className="mb-2 block text-sm font-medium">
+            ¿Quieres dejar un recuerdo?
+          </label>
 
-          <button
-            onClick={() => {
-              setShowModal(false);
-              showToast("✓ Agregada a tu biblioteca correctamente");
-            }}
-            className="px-4 py-2 rounded-lg bg-black text-white"
-          >
-            Guardar
-          </button>
+          <textarea
+            placeholder="Puedes escribir una opinión, una emoción o con quién la viste..."
+            rows="4"
+            className="w-full resize-none rounded-2xl border bg-gray-50 px-4 py-3 outline-none transition focus:border-black focus:bg-white"
+          />
+        </div>
+
+        <div>
+
+          {selectedLists.length > 0 && (
+            <div className="mb-3 flex flex-wrap gap-2">
+
+              {selectedLists.map((list) => (
+                <span
+                  key={list}
+                  className="rounded-full bg-black px-3 py-1 text-sm text-white"
+                >
+                  {list}
+                </span>
+              ))}
 
             </div>
+          )}
 
-          </div>
+          <button
+            type="button"
+            onClick={() => setShowLists(!showLists)}
+            className="w-full rounded-2xl border border-dashed px-4 py-3 text-left text-sm text-gray-600 transition hover:bg-gray-50"
+          >
+            + Agregar a listas
+          </button>
+
+          {showLists && (
+            <div className="mt-3 rounded-2xl bg-gray-50 p-3">
+
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+
+                {availableLists.map((list) => (
+                  <button
+                    key={list}
+                    type="button"
+                    onClick={() => {
+                      if (selectedLists.includes(list)) {
+                        setSelectedLists(
+                          selectedLists.filter(
+                            (item) => item !== list
+                          )
+                        );
+                      } else {
+                        setSelectedLists([
+                          ...selectedLists,
+                          list,
+                        ]);
+                      }
+                    }}
+                    className={`rounded-xl px-3 py-2 text-left text-sm transition ${
+                      selectedLists.includes(list)
+                        ? "bg-black text-white"
+                        : "bg-white hover:bg-gray-100"
+                    }`}
+                  >
+                    {list}
+                  </button>
+                ))}
+
+              </div>
+
+              <button
+                type="button"
+                className="mt-3 w-full rounded-xl border border-dashed bg-white px-3 py-2 text-sm text-gray-600 hover:bg-gray-100"
+              >
+                + Crear nueva lista
+              </button>
+
+            </div>
+          )}
 
         </div>
-      )}
+
+      </div>
+
+      <div className="mt-7 flex justify-end gap-3">
+
+        <button
+          onClick={() => setShowModal(false)}
+          className="rounded-2xl px-5 py-3 text-gray-600 transition hover:bg-gray-100"
+        >
+          Cancelar
+        </button>
+
+        <button
+          onClick={() => {
+            setShowModal(false);
+            showToast(
+              "✓ Agregada a tu biblioteca correctamente"
+            );
+          }}
+          className="rounded-2xl bg-black px-5 py-3 text-white transition hover:opacity-90"
+        >
+          Guardar
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+)}
     </>
   );
 }

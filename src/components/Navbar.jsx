@@ -99,10 +99,10 @@ useEffect(() => {
           </button>
 
             <button
-              onClick={() => navigateOrScroll("/etiquetas")}
+              onClick={() => navigateOrScroll("/listas")}
               className="hover:text-black transition"
             >
-              Etiquetas
+              Mis Listas
             </button>
 
                         <div

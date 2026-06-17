@@ -5,7 +5,7 @@ import Movies from "./pages/Movies";
 import Series from "./pages/Series";
 import Books from "./pages/Books";
 import Favorites from "./pages/Favorites";
-import Tags from "./pages/Tags";
+import Lists from "./pages/Lists";
 import ExplorarMovies from "./pages/ExplorarMovies";
 import ExplorarSeries from "./pages/ExplorarSeries";
 import ExplorarBooks from "./pages/ExplorarBooks";
@@ -27,7 +27,7 @@ function App() {
           <Route path="/series" element={<Series />} />
           <Route path="/libros" element={<Books />} />
           <Route path="/favoritos" element={<Favorites />} />
-          <Route path="/etiquetas" element={<Tags />} />
+          <Route path="/listas" element={<Lists />} />
           <Route path="/explorar/peliculas" element={<ExplorarMovies />} />
           <Route path="/explorar/series" element={<ExplorarSeries />} />
           <Route path="/explorar/libros" element={<ExplorarBooks />} />
